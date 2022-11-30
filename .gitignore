@@ -20,3 +20,5 @@
 /invert-red-blue
 /testExportImage2DColor
 /rbinverted-*.ppm
+/greenChan-*.ppm
+/save-green-channel

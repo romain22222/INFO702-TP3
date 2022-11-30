@@ -72,6 +72,30 @@ public:
 		return m_data.at(index(i,j));
 	}
 
+	template <typename TAccessor>
+	struct GenericConstIterator : public Container::const_iterator {
+		typedef TAccessor Accessor;
+		typedef typename Accessor::Argument  ImageValue; // Color ou unsigned char
+		typedef typename Accessor::Value     Value;      // unsigned char (pour ColorGreenAccessor)
+		typedef typename Accessor::Reference Reference;  // ColorGreenReference (pour ColorGreenAccessor)
+
+		GenericConstIterator( const Image2D<ImageValue>& image, int x, int y )
+				: Container::const_iterator( image.m_data.begin() + image.index( x, y ) ) {};
+
+		// Accès en lecture (rvalue)
+		Value operator*() const
+		{ return Accessor::access( Container::const_iterator::operator*() ); } //< Appel de op* de l'térateur de vector
+
+	};
+	template <typename Accessor>
+	GenericConstIterator< Accessor > start( int x = 0, int y = 0 ) const
+	{ return GenericConstIterator< Accessor >( *this, x, y ); }
+	template <typename Accessor>
+	GenericConstIterator< Accessor > begin() const
+	{ return start<Accessor>(); }
+	template <typename Accessor>
+	GenericConstIterator< Accessor > end() const
+	{ return start<Accessor>( 0, h()); }
 private:
 	Container m_data; // mes données; évitera de faire les allocations dynamiques
 	int m_width; // ma largeur
