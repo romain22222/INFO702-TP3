@@ -4,7 +4,9 @@ CXX=g++ -g -c
 EXEC_SRC=\
 	testImage2DGray.cpp\
 	testImage2DColor.cpp\
-	testImage2DColorBand.cpp
+	testImage2DColorBand.cpp\
+	testExportImage2DColor.cpp\
+	invert-red-blue.cpp
 
 MODULE_SRC=\
 
@@ -22,6 +24,12 @@ testImage2DColor: testImage2DColor.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 testImage2DColorBand: testImage2DColorBand.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+testExportImage2DColor: testExportImage2DColor.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+invert-red-blue: invert-red-blue.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 .cpp.o: %.cpp

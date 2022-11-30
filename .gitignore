@@ -17,3 +17,5 @@
 /testImage2DColor
 /testImage2DColorBand
 /testImage2DGray
+/invert-red-blue
+/testExportImage2DColor
