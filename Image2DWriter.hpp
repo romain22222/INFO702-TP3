@@ -117,9 +117,9 @@ public:
 		int height = std::stoi(line);
 		Image img(width, height, Color());
 		readline(input);
-		float r;
-		float g;
-		float b;
+		Color::Byte r;
+		Color::Byte g;
+		Color::Byte b;
 		input >> std::noskipws;
 		for ( Image::Iterator it = img.begin(), itE = img.end(); it != itE; ++it )
 		{
