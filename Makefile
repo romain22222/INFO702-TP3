@@ -7,7 +7,8 @@ EXEC_SRC=\
 	testImage2DColorBand.cpp\
 	testExportImage2DColor.cpp\
 	invert-red-blue.cpp\
-	save-green-channel.cpp
+	save-green-channel.cpp\
+	save-channels.cpp
 
 MODULE_SRC=\
 
@@ -34,6 +35,9 @@ invert-red-blue: invert-red-blue.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 save-green-channel: save-green-channel.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+save-channels: save-channels.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 .cpp.o: %.cpp
