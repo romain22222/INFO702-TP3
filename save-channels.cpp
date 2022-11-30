@@ -37,9 +37,9 @@ int main( int argc, char** argv )
 	typedef ColorImage2D::GenericConstIterator< ColorRedAccessor > ColorRedConstIterator;
 	typedef ColorImage2D::GenericConstIterator< ColorBlueAccessor > ColorBlueConstIterator;
 	// Notez comment on appelle la méthode \b générique `begin` de `Image2D`.
-	ColorGreenConstIterator itGreen = img.begin< ColorGreenAccessor >();
-	ColorRedConstIterator itRed = img.begin< ColorRedAccessor >();
-	ColorBlueConstIterator itBlue = img.begin< ColorBlueAccessor >();
+	ColorGreenConstIterator itGreen = img.cbegin< ColorGreenAccessor >();
+	ColorRedConstIterator itRed = img.cbegin< ColorRedAccessor >();
+	ColorBlueConstIterator itBlue = img.cbegin< ColorBlueAccessor >();
 	GrayLevelIterator itB = imgB.begin();
 	GrayLevelIterator itG = imgG.begin();
 	for ( GrayLevelIterator itR = imgR.begin(), itE = imgR.end();
