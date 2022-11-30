@@ -7,7 +7,6 @@
 /netlify
 /bruit-gaussian
 /histogram
-/histogram_*.pgm
 /egalise_*.pgm
 /netlified_*.pgm
 /bruited_*.pgm
@@ -29,3 +28,4 @@
 /README.TXT
 /make-catho
 /*_catho.pgm
+/*_histogram.pgm

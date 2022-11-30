@@ -131,4 +131,27 @@ private:
 		return y*m_width+x;
 	}
 };
+
+class Histogram {
+public:
+	template <typename InputIterator>
+	void init( InputIterator it, InputIterator itE ) {
+		_histo = std::vector<double>(256,0);
+		for ( InputIterator ih = it; ih != itE; ih++ )
+		{
+			_histo[(double)(*ih)]++;
+		}
+		for (auto& v : _histo) {
+			v/=(itE-it);
+		}
+		_cumhisto = std::vector<double>(_histo);
+		for (auto it = _cumhisto.begin()+1; it != _cumhisto.end() ; it++) {
+			*it += *(it-1);
+		}
+	}
+	int egalisation(int j) const { return 0; }
+	std::vector<double> _histo;
+	std::vector<double> _cumhisto;
+};
+
 #endif // _IMAGE2D_HPP_

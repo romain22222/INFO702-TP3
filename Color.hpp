@@ -61,12 +61,23 @@ struct Color {
 		// Taking care of value
 		v = max();
 	}
-	/**
-	   TODO: Convertit la couleur donnée avec le modèle HSV (TSV en
-	   français) en une couleur RGB.
-	*/
+
 	void setHSV( int h, float s, float v )
-	{}
+	{
+		int ti = h/60;
+		float f = (float)h/60. - ti;
+		float l = v * (1 - s);
+		float m = v * (1 - f * s);
+		float n = v * (1 - (1 - f) * s);
+		switch (ti) {
+			case 0: (red, green, blue) = (v, n, l); break;
+			case 1: (red, green, blue) = (m, v, l); break;
+			case 2: (red, green, blue) = (l, v, n); break;
+			case 3: (red, green, blue) = (l, m, v); break;
+			case 4: (red, green, blue) = (n, l, v); break;
+			case 5: (red, green, blue) = (v, l, m); break;
+		}
+	}
 };
 
 #endif //_COLOR_HPP_
