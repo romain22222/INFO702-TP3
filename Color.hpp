@@ -70,13 +70,19 @@ struct Color {
 		float m = v * (1 - f * s);
 		float n = v * (1 - (1 - f) * s);
 		switch (ti) {
-			case 0: (red, green, blue) = (v, n, l); break;
-			case 1: (red, green, blue) = (m, v, l); break;
-			case 2: (red, green, blue) = (l, v, n); break;
-			case 3: (red, green, blue) = (l, m, v); break;
-			case 4: (red, green, blue) = (n, l, v); break;
-			case 5: (red, green, blue) = (v, l, m); break;
+			case 0: setColor(v, n, l); break;
+			case 1: setColor(m, v, l); break;
+			case 2: setColor(l, v, n); break;
+			case 3: setColor(l, m, v); break;
+			case 4: setColor(n, l, v); break;
+			case 5: setColor(v, l, m); break;
 		}
+	}
+
+	void setColor(float r, float g, float b) {
+		red = r*255;
+		green = g*255;
+		blue = b*255;
 	}
 };
 

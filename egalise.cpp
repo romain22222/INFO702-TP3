@@ -1,36 +1,40 @@
 #include <iostream>
 #include <fstream>
-#include "GrayLevelImage2D.hpp"
+#include "Image2D.hpp"
+#include "Image2DWriter.hpp"
+#include "Accessor.hpp"
 
 using namespace std;
 
 int main( int argc, char** argv )
 {
-	typedef GrayLevelImage2D::GrayLevel GrayLevel;
-	typedef GrayLevelImage2D::Iterator  Iterator;
+	typedef Image2D<Color> ColorImage2D;
+	typedef Image2D<unsigned char> GrayLevelImage2D;
+	typedef Image2DWriter<Color> ColorImage2DWriter;
+	typedef ColorImage2D::Iterator ColorIterator;
+	typedef Image2D<Color>::GenericIterator<ColorValueAccessor> HUEIterator;
 	if ( argc < 2 )
 	{
-		std::cerr << "Usage: filtre-median <input.pgm>" << std::endl;
+		std::cerr << "Usage: histogram <input.ppm>" << std::endl;
 		return 0;
 	}
-	GrayLevelImage2D img;
-	ifstream input( argv[1] ); // récupère le 1er argument.
-	bool ok = img.importPGM( input );
-	if ( !ok )
-	{
-		std::cerr << "Error reading input file." << std::endl;
-		return 1;
-	}
+	std::string fn = argv[1];
+	std::string line = fn;
+	std::string delim = ".ppm";
+	std::string n = line.substr(0, line.find(delim));
+	std::ifstream input( fn );
+	ColorImage2D img = ColorImage2DWriter::read( input );
 	input.close();
 
-	img.egalise();
-	ofstream output( "egalise_" + std::string(argv[1]) ); // récupère le 2ème argument.
-	ok = img.exportPGM( output, false );
-	if ( !ok )
-	{
-		std::cerr << "Error writing output file." << std::endl;
-		return 1;
+	Histogram h;
+	h.init(img.begin<ColorValueAccessor>(), img.end<ColorValueAccessor>());
+
+	for (HUEIterator it = img.begin<ColorValueAccessor>(), itE = img.end<ColorValueAccessor>(); it != itE; it++) {
+		*it = h.egalisation(*it);
 	}
+
+	ofstream output( n + "_egalise.ppm");
+	ColorImage2DWriter::write( img, output, false );
 	output.close();
 	return 0;
 }

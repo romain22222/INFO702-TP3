@@ -10,7 +10,8 @@ EXEC_SRC=\
 	save-green-channel.cpp\
 	save-channels.cpp\
 	make-catho.cpp\
-	histogram.cpp
+	histogram.cpp\
+	egalise.cpp
 
 MODULE_SRC=\
 
@@ -46,6 +47,9 @@ make-catho: make-catho.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 histogram: histogram.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+egalise: egalise.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 .cpp.o: %.cpp

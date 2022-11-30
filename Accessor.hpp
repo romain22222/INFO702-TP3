@@ -140,7 +140,7 @@ struct ColorValueAccessor {
 			int h;
 			float s, v;
 			arg.getHSV(h,s,v);
-			arg.setHSV(h,s,val/255);
+			arg.setHSV(h,s,(float)val/255.);
 			return *this;
 		}
 
@@ -164,7 +164,7 @@ struct ColorValueAccessor {
 		int h;
 		float s, v;
 		arg.getHSV(h,s,v);
-		return v;
+		return v*255;
 	}
 
 	// Il suffit de créer et retourner un objet de type ColorValueReference référençant arg.
