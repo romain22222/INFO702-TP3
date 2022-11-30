@@ -1,0 +1,14 @@
+*.o
+/bruit-impulsionnel
+/double-brightness
+/filtrage-median
+/testGrayLevelImage2D
+/egalise
+/netlify
+/bruit-gaussian
+/histogram
+/histogram_*.pgm
+/egalise_*.pgm
+/netlified_*.pgm
+/bruited_*.pgm
+/.idea/
