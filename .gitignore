@@ -12,3 +12,8 @@
 /netlified_*.pgm
 /bruited_*.pgm
 /.idea/
+/colors.ppm
+/testImage2D
+/testImage2DColor
+/testImage2DColorBand
+/testImage2DGray
