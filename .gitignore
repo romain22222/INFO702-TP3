@@ -21,12 +21,15 @@
 /*_red.pgm
 
 /make-catho
-/*_catho.pgm
+/*_catho.ppm
 
 /histogram
 /*_histogram.pgm
 
 /egalise
-/*_egalise.pgm
+/*_egalise.ppm
 
 /README.TXT
+
+/upscale
+/*_upscaled_times_*.ppm

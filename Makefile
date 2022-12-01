@@ -11,7 +11,8 @@ EXEC_SRC=\
 	save-channels.cpp\
 	make-catho.cpp\
 	histogram.cpp\
-	egalise.cpp
+	egalise.cpp\
+	upscale.cpp
 
 MODULE_SRC=\
 
@@ -50,6 +51,9 @@ histogram: histogram.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 egalise: egalise.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+upscale: upscale.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 .cpp.o: %.cpp
