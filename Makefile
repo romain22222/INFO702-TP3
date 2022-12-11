@@ -12,7 +12,8 @@ EXEC_SRC=\
 	make-catho.cpp\
 	histogram.cpp\
 	egalise.cpp\
-	upscale.cpp
+	upscale.cpp\
+	egaliseurTriColor.cpp
 
 MODULE_SRC=\
 
@@ -54,6 +55,9 @@ egalise: egalise.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 upscale: upscale.o ${MODULE_OBJ}
+	${LD} ${MODULE_OBJ} $< -o $@
+
+egaliseurTriColor: egaliseurTriColor.o ${MODULE_OBJ}
 	${LD} ${MODULE_OBJ} $< -o $@
 
 .cpp.o: %.cpp
