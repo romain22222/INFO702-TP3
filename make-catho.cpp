@@ -41,7 +41,7 @@ int main( int argc, char** argv )
 		++itRed; ++itGreen; ++itBlue;
 		x = ( x+1 ) % img.w();
 	}
-	std::ofstream output( n + "_catho.pgm" );
+	std::ofstream output( n + "_catho.ppm" );
 	ColorImage2DWriter::write( img, output, false );
 	output.close();
 	return 0;
